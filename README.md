@@ -29,22 +29,22 @@ The test program options are displayed as follows:
 
 `java storm.contrib.aerospike.test.AerospikeRoundTripTest -help
 usage: java AerospikeRoundTripTest
- -dbg          turn on Topology debugging (default false)    
- -et <arg>     number of enrich Bolt threads (default 1)    
- -h <arg>      Aerospike host (default 127.0.0.1)    
- -help         help    
- -l <arg>      highest key value before looping back to 0. 0 = don't loop (default 0)    
- -n <arg>      Aerospike namespace (default test)    
- -p <arg>      Aerospike port (default 3000)    
- -pt <arg>     number of persist Bolt threads (default 1)    
- -r <arg>      number of records(streams) to submit. 0 = infinite (default 1)    
- -s <arg>      Aerospike set (default Bolt)    
- -seed <arg>   Random field seed value (default 1)    
- -st           submit Topology to a Storm cluster (default false)    
- -v            validate the insertions by reading and comparing (default false)    
- -vo           validate by reading and comparing to expected values (default false)    
- -vt <arg>     number of validate Bolt threads (default 1)    
- -w <arg>      number of storm workers (default 4)    
+ -dbg          turn on Topology debugging (default false)  
+ -et <arg>     number of enrich Bolt threads (default 1)  
+ -h <arg>      Aerospike host (default 127.0.0.1)  
+ -help         help  
+ -l <arg>      highest key value before looping back to 0. 0 = don't loop (default 0)  
+ -n <arg>      Aerospike namespace (default test)  
+ -p <arg>      Aerospike port (default 3000)  
+ -pt <arg>     number of persist Bolt threads (default 1)  
+ -r <arg>      number of records(streams) to submit. 0 = infinite (default 1)  
+ -s <arg>      Aerospike set (default Bolt)  
+ -seed <arg>   Random field seed value (default 1)  
+ -st           submit Topology to a Storm cluster (default false)  
+ -v            validate the insertions by reading and comparing (default false)  
+ -vo           validate by reading and comparing to expected values (default false)  
+ -vt <arg>     number of validate Bolt threads (default 1)  
+ -w <arg>      number of storm workers (default 4)`  
 
 The default operation of the test program is to set up a local mode Storm Topology that will encompass a test Spout along with a single Bolt. The Bolt will connect to an Aerospike cluster using the default, host, port, and namespace. The Spout will emit a single tuple consisting of 3 name/value pairs onto the stream. The Bolt will receive the tuple and persist the tuple in the Aerospike database on the default set. The key will be the numeric value '1'. The following displays the default Storm Topology.
 
