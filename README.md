@@ -84,8 +84,8 @@ export CLASSPATH=".:/home/rek/Downloads/storm-contrib-master/storm-aerospike/tar
 
 Test program examples
 ---------------------
-`storm jar storm-contrib-aerospike-0.1-SNAPSHOT-jar-with-dependencies.jar AerospikeRoundTripTest -h 192.168.25.64 -r 0 \    
--l 1000000 -st -pt 4 -et 8 -vt 8 -w 4 -v`
+`storm jar storm-contrib-aerospike-0.1-SNAPSHOT-jar-with-dependencies.jar AerospikeRoundTripTest -h 192.168.25.64 -r 0 \`     
+`-l 1000000 -st -pt 4 -et 8 -vt 8 -w 4 -v`
 
 Execute the Topology in distributed mode by providing the jar to storm, submitting the Topology including validation of persisted data (-v) for execution. Execute the Spout forever (-r 0), looping at record # 1000000 (-l 1000000), with one of the Aerospike server nodes being at IP address 192.168.25.64, utilizing 4 AerospikePersistanceBolt threads, 8 AerospikeEnrichBolt threads, and 8 AerospikeValidationBolt threads spread among 4 processes (-w 4)
 
