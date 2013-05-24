@@ -95,5 +95,5 @@ Execute the Topology in local mode, simply persisting 1000000 records to Aerospi
 
 Support
 -------
-For questions/support, please post on the Aerospike forum for Storm
+For questions/support, please post on the [Aerospike Storm Interface Forum](https://forums.aerospike.com/viewforum.php?f=27)
 
