@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>storm</groupId>
-		<artifactId>storm-contrib</artifactId>
-		<version>0.1-SNAPSHOT</version>
-	</parent>
 
-        <properties>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
+	<modelVersion>4.0.0</modelVersion>
+  <artifactId>storm-aerospike</artifactId>
+	<packaging>jar</packaging>
+	<name>Storm Aerospike</name>
+	<description>Components for Storm integration with Aerospike.</description>
+
+  <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <storm.version>0.8.2</storm.version>
+    <aerospike.client.version>3.0.6</aerospike.client.version>
 	</properties>
 
+  <repositories>
+    <!-- Maven Repository where Storm's binaries are made available -->
+    <repository>
+      <id>clojars</id>
+      <url>http://clojars.org/repo/</url>
+    </repository>
+  </repositories>
 
-	  <artifactId>storm-contrib-aerospike</artifactId>
-	  <packaging>jar</packaging>
-	  <name>storm-contrib-aerospike</name>
-	  <description>Components for Storm integration with Aerospike</description>
-
-	  <dependencies>
+	<dependencies>
 		<dependency>
 		  <groupId>storm</groupId>
 		  <artifactId>storm</artifactId>
+      <version>${storm.version}</version>
 		  <scope>provided</scope>
 		</dependency>
+    <!-- You need to install the Aerospike Client yourself: http://www.aerospike.com/client_downloads/ -->
 		<dependency>
 			<groupId>com.aerospike</groupId>
 			<artifactId>aerospike-client</artifactId>
-			<version>2.1.16</version>
+			<version>${aerospike.client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
 			<artifactId>commons-cli</artifactId>
 			<version>1.2</version>
 		</dependency>
-	  </dependencies>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -49,6 +62,23 @@
 				</archive>
 				</configuration>
 			</plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>storm.contrib.aerospike.test.AerospikeRoundTripTest</mainClass>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
+
 </project>
